@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
 import axios from "axios";
 import NasaCard from "./NasaCard";
+import ExplanationCard from "./ExplanationCard";
 
 export default function NasaList(){
     const [pictures, setPictures] = useState([]);
@@ -18,12 +19,12 @@ export default function NasaList(){
        
     return (
         <div>
-           <NasaCard imgUrl={pictures.url} explanation={pictures.explanation} date={pictures.date} title={pictures.title}/>
-            
+           <NasaCard imgUrl={pictures.url} date={pictures.date} title={pictures.title}/>
+        
+      
+             <ExplanationCard explanation={pictures.explanation} />
+       
         </div>
     );
 }
 
-  {/* {pictures.map((picture, index) => {
-                return <NasaCard key={index}  imgUrl={picture.url} explanation={picture.explanation} date={picture.date}/>
-            })}; */}
