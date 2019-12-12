@@ -2,12 +2,30 @@ import React, { useState, useEffect} from "react";
 import axios from "axios";
 import NasaCard from "./NasaCard";
 import ExplanationCard from "./ExplanationCard";
+import NasaButtons from "./NasaButtons";
 
 export default function NasaList(){
     const [pictures, setPictures] = useState([]);
+    let newDate = new Date();
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
+    }
+    
+    const [date, setDate] = useState(formatDate(newDate));
+    console.log(formatDate(newDate));
 
     useEffect(() => {
-        axios.get("https://api.nasa.gov/planetary/apod?api_key=KjXOIgq6DaekwB4mBBkxMdzKNEAAX9cVGj3VnUs4")
+        axios.get(`https://api.nasa.gov/planetary/apod?api_key=KjXOIgq6DaekwB4mBBkxMdzKNEAAX9cVGj3VnUs4&date=${date}`)
             .then(response => {
                 console.log("this", response.data);
                 setPictures(response.data);
@@ -15,15 +33,14 @@ export default function NasaList(){
             .catch(error => {
                 console.log('the data was not return', error);
             });
-    }, []);
+    }, [date]);
+
        
     return (
         <div>
-           <NasaCard imgUrl={pictures.url} date={pictures.date} title={pictures.title}/>
-        
-      
-             <ExplanationCard explanation={pictures.explanation} />
-       
+            <NasaButtons setDate={setDate}/>
+            <NasaCard imgUrl={pictures.url} date={pictures.date} title={pictures.title}/>
+            <ExplanationCard explanation={pictures.explanation} />
         </div>
     );
 }
