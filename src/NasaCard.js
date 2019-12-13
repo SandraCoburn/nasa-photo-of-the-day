@@ -1,5 +1,6 @@
 import React from "react";
-import { Card, CardImg, CardText, CardBody, CardTitle } from "reactstrap";
+import { MyCardTitle } from "./styles";
+import { Card, CardImg, CardText, CardBody } from "reactstrap";
 
 const NasaCard = props => {
   return (
@@ -15,7 +16,7 @@ const NasaCard = props => {
           src={props.imgUrl}
         />
         <CardBody>
-          <CardTitle>{props.title}</CardTitle>
+          <MyCardTitle>{props.title}</MyCardTitle>
         </CardBody>
       </Card>
     </div>
