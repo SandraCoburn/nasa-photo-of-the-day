@@ -1,13 +1,20 @@
 import React from "react";
+import {
+    Card, CardImg, CardText, CardBody,
+    CardTitle
+  } from 'reactstrap';
 
 
 const NasaCard = (props) => {
     return(
         <div className="nasaImage">
-            <h2>Date: {props.date}</h2>
-            <img className="nasa-picture" alt="Nasa" src={props.imgUrl} />
-            <h3>{props.title}</h3>
-
+            <Card body>≈
+            <CardText>Date: {props.date}</CardText>
+            <CardImg body className="text center" width="100%" style={{ maxWidth: "500px"}}className="nasa-picture" alt="Nasa" src={props.imgUrl} />
+            <CardBody>
+            <CardTitle>{props.title}</CardTitle>
+            </CardBody>
+            </Card>
         </div>
     )
 }

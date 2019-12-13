@@ -1,4 +1,8 @@
 import React from "react";
+import {
+    Card, CardImg, CardText, CardBody,
+    CardTitle
+  } from 'reactstrap';
 
 
 const ExplanationCard = (props) => {
@@ -6,10 +10,10 @@ const ExplanationCard = (props) => {
 
     return(
         <div>
-        
-            <h2>Explanation: </h2>
-            <p>{props.explanation}</p>
-
+            <Card>
+            <CardTitle color="purple" className="text center" width="100%" style={{ maxWidth: "400px"}}>Explanation:</CardTitle>
+            <CardText  className="text center" width="100%" style={{ maxWidth: "400px"}}>{props.explanation}</CardText>
+            </Card>
         </div>
     )
 }

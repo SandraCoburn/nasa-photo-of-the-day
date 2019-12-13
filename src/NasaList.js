@@ -3,6 +3,8 @@ import axios from "axios";
 import NasaCard from "./NasaCard";
 import ExplanationCard from "./ExplanationCard";
 import NasaButtons from "./NasaButtons";
+import { Col, Row} from 'reactstrap';
+
 
 export default function NasaList(){
     const [pictures, setPictures] = useState([]);
@@ -37,10 +39,18 @@ export default function NasaList(){
 
        
     return (
+       
         <div>
+           
             <NasaButtons setDate={setDate}/>
+            <Row>
+            <Col xs="6">
             <NasaCard imgUrl={pictures.url} date={pictures.date} title={pictures.title}/>
-            <ExplanationCard explanation={pictures.explanation} />
+            </Col>
+            <Col xs="6">
+            <ExplanationCard explanation={pictures.explanation} /> 
+            </Col>
+            </Row>
         </div>
     );
 }
